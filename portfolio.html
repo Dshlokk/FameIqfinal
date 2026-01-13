@@ -2,230 +2,180 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <title>Portfolio — FAMEIQ</title>
-
   <link rel="stylesheet" href="style.css" />
-
-  <style>
-    /* ================= PORTFOLIO PAGE ================= */
-
-    .portfolio-section {
-      padding: clamp(4rem, 8vw, 7rem) 0;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-      margin-top: 3rem;
-    }
-
-    /* ===== Website Card ===== */
-    .site-card {
-      background: linear-gradient(
-        180deg,
-        rgba(34,46,119,0.92),
-        rgba(12,18,64,0.92)
-      );
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .site-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-    }
-
-    /* ===== Live Preview Frame ===== */
-    .site-preview {
-      position: relative;
-      height: 200px;
-      background: #020642;
-      overflow: hidden;
-    }
-
-    .site-preview iframe {
-      width: 1440px;
-      height: 900px;
-      transform: scale(0.25);
-      transform-origin: top left;
-      border: none;
-      pointer-events: none; /* prevents scroll inside */
-    }
-
-    /* Click overlay */
-    .site-preview::after {
-      content: "View Website ↗";
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(2,6,66,0.55);
-      color: #ffd900;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .site-card:hover .site-preview::after {
-      opacity: 1;
-    }
-
-    .site-content {
-      padding: 1.4rem 1.6rem 1.8rem;
-    }
-
-    .site-content h3 {
-      margin-bottom: 0.4rem;
-    }
-
-    .site-content p {
-      font-size: 0.9rem;
-      color: #c3c7ff;
-    }
-
-    /* Make entire card clickable */
-    .site-link {
-      position: absolute;
-      inset: 0;
-      z-index: 5;
-    }
-
-    /* ===== Video Section ===== */
-    .video-section {
-      margin-top: 7rem;
-      text-align: center;
-    }
-
-    .video-stats {
-      margin-top: 1rem;
-      font-size: 1rem;
-      color: #ffd900;
-      font-weight: 600;
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.2rem;
-      margin-top: 3rem;
-    }
-
-    .video-card {
-      background: rgba(12,18,64,0.9);
-      border-radius: 18px;
-      padding: 2.4rem;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-  </style>
+  <script src="main.js" defer></script>
 </head>
 
 <body data-page="portfolio">
 
+  <!-- Background Canvas -->
   <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="logo.png" alt="FAMEIQ" class="brand-logo" />
+      </a>
+
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="process.html">Process</a></li>
+          <li><a href="why-us.html">Why Us</a></li>
+          <li>
+            <a href="contact.html" class="btn btn-small btn-outline">Let’s Talk</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <main class="page">
 
-    <!-- WEBSITES -->
+    <!-- ================= WEBSITES SECTION ================= -->
     <section class="section portfolio-section">
       <div class="container section-header">
         <p class="eyebrow">Portfolio</p>
         <h2>Websites We’ve Built</h2>
         <p class="section-intro">
-          Live previews of real, production-ready websites crafted for performance and clarity.
+          High-performance websites designed for clarity, conversion, and long-term growth.
         </p>
       </div>
 
       <div class="container portfolio-grid">
 
         <!-- Syran Management -->
-        <div class="site-card">
+        <div class="site-card glass">
           <div class="site-preview">
-            <iframe src="https://syranmanagement.com"></iframe>
+            <iframe src="https://syranmanagement.com" loading="lazy"></iframe>
+            <a href="https://syranmanagement.com" target="_blank" class="site-preview-link"></a>
           </div>
           <div class="site-content">
             <h3>Syran Management</h3>
-            <p>Corporate management website focused on authority and lead clarity.</p>
+            <p>Corporate management website focused on brand authority and lead clarity.</p>
+            <span class="site-cta">Visit Website →</span>
           </div>
-          <a href="https://syranmanagement.com" target="_blank" class="site-link"></a>
         </div>
 
         <!-- Prelite Estate -->
-        <div class="site-card">
+        <div class="site-card glass">
           <div class="site-preview">
-            <iframe src="https://preliteestate.in"></iframe>
+            <iframe src="https://preliteestate.in" loading="lazy"></iframe>
+            <a href="https://preliteestate.in" target="_blank" class="site-preview-link"></a>
           </div>
           <div class="site-content">
             <h3>Prelite Estate</h3>
-            <p>Real estate website designed to showcase premium properties.</p>
+            <p>Real-estate platform built to showcase premium properties and build trust.</p>
+            <span class="site-cta">Visit Website →</span>
           </div>
-          <a href="https://preliteestate.in" target="_blank" class="site-link"></a>
         </div>
 
         <!-- Astropholic -->
-        <div class="site-card">
+        <div class="site-card glass">
           <div class="site-preview">
-            <iframe src="https://astropholic.in"></iframe>
+            <iframe src="https://astropholic.in" loading="lazy"></iframe>
+            <a href="https://astropholic.in" target="_blank" class="site-preview-link"></a>
           </div>
           <div class="site-content">
             <h3>Astropholic</h3>
-            <p>Creative community platform for storytelling and filmmaking.</p>
+            <p>Creative community website built for storytelling and youth engagement.</p>
+            <span class="site-cta">Visit Website →</span>
           </div>
-          <a href="https://astropholic.in" target="_blank" class="site-link"></a>
         </div>
 
         <!-- Aerovision College -->
-        <div class="site-card">
+        <div class="site-card glass">
           <div class="site-preview">
-            <iframe src="https://www.aerovisioncollege.com"></iframe>
+            <iframe src="https://www.aerovisioncollege.com" loading="lazy"></iframe>
+            <a href="https://www.aerovisioncollege.com" target="_blank" class="site-preview-link"></a>
           </div>
           <div class="site-content">
             <h3>Aerovision College</h3>
-            <p>Educational institution website focused on admissions flow.</p>
+            <p>Educational institution website focused on admissions and credibility.</p>
+            <span class="site-cta">Visit Website →</span>
           </div>
-          <a href="https://www.aerovisioncollege.com" target="_blank" class="site-link"></a>
         </div>
 
         <!-- Private Safe -->
-        <div class="site-card">
+        <div class="site-card glass">
           <div class="site-preview">
-            <iframe src="https://privatesafe.in"></iframe>
+            <iframe src="https://privatesafe.in" loading="lazy"></iframe>
+            <a href="https://privatesafe.in" target="_blank" class="site-preview-link"></a>
           </div>
           <div class="site-content">
             <h3>Private Safe</h3>
-            <p>Security-first website built around trust and privacy.</p>
+            <p>Security-focused website built around trust, privacy, and minimal design.</p>
+            <span class="site-cta">Visit Website →</span>
           </div>
-          <a href="https://privatesafe.in" target="_blank" class="site-link"></a>
         </div>
 
       </div>
+    </section>
 
-      <!-- VIDEOS -->
-      <div class="container video-section">
-        <h2>Video Content Production</h2>
+    <!-- ================= VIDEOS SECTION ================= -->
+    <section class="section video-section">
+      <div class="container section-header">
+        <p class="eyebrow">Video Work</p>
+        <h2>Content That Drives Attention</h2>
         <p class="section-intro">
-          High-performing content created for reach, engagement, and brand growth.
+          We’ve produced short-form and long-form content generating <strong>40K+ organic views</strong>
+          across platforms through storytelling and algorithm-driven edits.
         </p>
-
-        <div class="video-stats">
-          40,000+ Organic Views Generated
-        </div>
-
-        <div class="video-grid">
-          <div class="video-card">Video Placeholder</div>
-          <div class="video-card">Video Placeholder</div>
-          <div class="video-card">Video Placeholder</div>
-        </div>
       </div>
 
+      <div class="container video-grid">
+
+        <!-- Video Placeholder 1 -->
+        <div class="video-card glass">
+          <div class="video-frame">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Video Placeholder 2 -->
+        <div class="video-card glass">
+          <div class="video-frame">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <!-- Video Placeholder 3 -->
+        <div class="video-card glass">
+          <div class="video-frame">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
+          </div>
+        </div>
+
+      </div>
     </section>
 
   </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">FAMEIQ</span>
+        <p>Growth with Algorithm.</p>
+      </div>
+
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="process.html">Process</a>
+        <a href="why-us.html">Why us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="footer-meta">
+        <a href="mailto:hello@fameiq.studio">hello@fameiq.studio</a>
+        <span>© 2026 FAMEIQ Studio</span>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
