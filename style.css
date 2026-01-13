@@ -3752,3 +3752,103 @@ body {
   color: #ffd900;
   font-weight: 600;
 }
+/* ===================== PORTFOLIO – COMPACT CARD FIX ===================== */
+
+/* Grid tighter + centered */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+  margin-top: 2.4rem;
+}
+
+/* Individual card height control */
+.site-card {
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr;
+  min-height: 220px;
+  max-height: 240px;
+  overflow: hidden;
+}
+
+/* Preview area smaller */
+.site-preview {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 18px 0 0 18px;
+}
+
+/* Scale iframe to look like thumbnail */
+.site-preview iframe {
+  width: 160%;
+  height: 160%;
+  transform: scale(0.62);
+  transform-origin: top left;
+  border: none;
+  pointer-events: none;
+}
+
+/* Text area compact */
+.site-content {
+  padding: 1.2rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.site-content h3 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.site-content p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  opacity: 0.85;
+  margin-bottom: 0.6rem;
+}
+
+.site-cta {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ffd900;
+}
+
+/* Hover polish */
+.site-card:hover {
+  transform: translateY(-2px);
+}
+
+/* ===================== TABLET ===================== */
+@media (max-width: 960px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-card {
+    grid-template-columns: 1fr 1.3fr;
+    min-height: 210px;
+  }
+}
+
+/* ===================== MOBILE ===================== */
+@media (max-width: 640px) {
+  .site-card {
+    grid-template-columns: 1fr;
+    max-height: none;
+  }
+
+  .site-preview {
+    height: 160px;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .site-preview iframe {
+    transform: scale(0.55);
+  }
+
+  .site-content {
+    padding: 1rem 1.2rem;
+  }
+}
