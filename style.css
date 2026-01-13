@@ -1,0 +1,3619 @@
+/* =============== ROOT & RESET =============== */
+
+:root {
+  --color-bg: #020bff;
+  --color-bg-deep: #020642;
+  --color-accent: #ffd900;
+  --color-accent-soft: rgba(255, 217, 0, 0.1);
+  --color-text: #f5f7ff;
+  --color-muted: #c3c7ff;
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 24px 65px rgba(0, 0, 0, 0.55);
+  --blur-glass: 26px;
+  --transition-fast: 200ms cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-slow: 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  --container-width: 1120px;
+}
+/* ====================================
+    RESET
+==================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ====================================
+   VARIABLES
+==================================== */
+
+:root {
+  --color-bg: #020bff;
+  --color-bg-deep: #020642;
+  --color-accent: #ffd900;
+  --color-accent-soft: rgba(255, 217, 0, 0.1);
+  --color-text: #f5f7ff;
+  --color-muted: #c3c7ff;
+  --border-subtle: rgba(255, 255, 255, 0.12);
+
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 24px 65px rgba(0, 0, 0, 0.55);
+  --blur-glass: 26px;
+
+  --transition-fast: 200ms cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-slow: 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  --container-width: 1120px;
+}
+
+/* ====================================
+   GLOBAL
+==================================== */
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  color: var(--color-text);
+  background: radial-gradient(circle at 0 0, #2b3cff 0, #020642 55%, #010221 100%);
+  min-height: 100svh;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 650;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: 1.6rem;
+}
+
+.section {
+  position: relative;
+  padding: 5.2rem 0;
+}
+
+.section-header {
+  max-width: 640px;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 2.8vw, 2.6rem);
+  letter-spacing: -0.03em;
+}
+
+.section-intro {
+  margin-top: 0.5rem;
+  color: var(--color-muted);
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.8rem;
+}
+
+/* ====================================
+   LAYOUT & PAGE TRANSITION
+==================================== */
+
+.page {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 400ms cubic-bezier(0.19, 1, 0.22, 1),
+              transform 400ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.page-is-ready .page {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ====================================
+   HEADER
+==================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(
+    to bottom,
+    rgba(3, 11, 123, 0.96),
+    rgba(1, 3, 26, 0.82),
+    transparent
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.9rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+  border-radius: 10px;
+  mix-blend-mode: screen;
+  background-color: transparent;
+}
+
+.nav {
+  position: relative;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  transition: color var(--transition-fast);
+}
+
+.nav-links a:hover,
+.nav-links a.is-active {
+  color: var(--color-text);
+}
+
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(3, 12, 76, 0.96);
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-toggle-line {
+  width: 18px;
+  height: 1.8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-text);
+  display: block;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.nav-toggle-line + .nav-toggle-line {
+  margin-top: 4px;
+}
+
+/* ====================================
+   BUTTONS
+==================================== */
+
+.btn {
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 0.7rem 1.6rem;
+  font-size: 0.92rem;
+  font-weight: 550;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    background var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-primary {
+  color: #020642;
+  background: linear-gradient(135deg, #ffd900, #ffe86a);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.72);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(1, 7, 44, 0.86);
+  color: var(--color-text);
+}
+
+.btn-outline:hover {
+  background: rgba(6, 27, 87, 0.98);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--color-muted);
+  padding-inline: 1.3rem;
+}
+
+.btn-ghost:hover {
+  background: rgba(4, 16, 84, 0.94);
+  color: var(--color-text);
+}
+
+.btn-small {
+  padding: 0.55rem 1.2rem;
+  font-size: 0.82rem;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* ====================================
+   BACKGROUND (CANVAS + ORBS)
+==================================== */
+
+.background-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#bgCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.orb {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(58px);
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  background: radial-gradient(circle at 30% 20%, #ffe86a, transparent 60%);
+}
+
+.orb-left {
+  top: 12%;
+  left: -10%;
+}
+
+.orb-right {
+  bottom: -6%;
+  right: -12%;
+}
+
+/* digital grid overlay */
+.background-layer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px;
+  opacity: 0.28;
+  mix-blend-mode: soft-light;
+  transform-origin: center;
+  animation: gridDrift 46s linear infinite;
+}
+
+.background-layer::after {
+  content: "";
+  position: absolute;
+  inset: -10% -10%;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255, 217, 0, 0.22), transparent 60%),
+    radial-gradient(circle at 90% 120%, rgba(104, 124, 255, 0.45), transparent 65%);
+  filter: blur(40px);
+  opacity: 0.9;
+  mix-blend-mode: screen;
+}
+
+/* ====================================
+   HERO SECTION
+==================================== */
+
+.hero {
+  padding-top: 5.4rem;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 3.1fr);
+  gap: 3.2rem;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: clamp(2.3rem, 4vw, 3.4rem);
+  letter-spacing: -0.04em;
+  margin-bottom: 1.2rem;
+}
+
+.highlight-inline {
+  display: inline-block;
+  padding-inline: 0.18em;
+  border-radius: 0.18em;
+  background: var(--color-accent);
+  color: #020642;
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  color: var(--color-muted);
+  max-width: 520px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.metric-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 650;
+}
+
+.metric-label {
+  font-size: 0.86rem;
+  color: var(--color-muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+/* ====================================
+   GLASS UTILITY
+==================================== */
+
+.glass {
+  background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 255, 255, 0.02)
+    ),
+    rgba(3, 10, 60, 0.9);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(var(--blur-glass));
+  box-shadow: var(--shadow-soft);
+}
+
+/* ====================================
+   VALUES SECTION (.values-section / .values-card)
+==================================== */
+
+.values-section {
+  padding-top: 3.8rem;
+}
+
+.values-grid {
+  margin-top: 2.3rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+
+.values-card {
+  padding: 1.8rem 1.7rem;
+}
+
+/* ====================================
+   PROCESS SECTION (.process-section / .process-card)
+==================================== */
+
+.process-section {
+  padding-top: 4.2rem;
+}
+
+.process-grid {
+  margin-top: 2.4rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+
+.process-card {
+  padding: 1.9rem 1.7rem;
+}
+
+.process-step {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-muted);
+  margin-bottom: 0.4rem;
+}
+
+/* custom gradient for main process cards only */
+.process-card--primary {
+  background:
+    radial-gradient(circle at 5% 0%, rgba(255, 255, 255, 0.10), transparent 55%),
+    linear-gradient(145deg, rgba(11, 30, 118, 0.98), rgba(3, 14, 88, 0.98));
+  border-color: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.65);
+}
+
+/* ====================================
+   WHY SECTION (.why-section / .why-card)
+==================================== */
+
+.why-section {
+  padding-top: 4.4rem;
+}
+
+.why-layout {
+  margin-top: 2.4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.4fr);
+  gap: 1.7rem;
+}
+
+.why-left {
+  padding: 1.9rem 1.8rem 1.8rem;
+}
+
+.why-left-title {
+  margin-bottom: 1.2rem;
+}
+
+.why-left-item + .why-left-item {
+  margin-top: 1.1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.why-left-item p {
+  color: var(--color-muted);
+  margin-top: 0.3rem;
+}
+
+.why-side {
+  padding: 1.8rem 1.7rem;
+}
+
+.why-questions {
+  margin: 0 0 0.9rem;
+  padding-left: 1.1rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+/* ====================================
+   PROJECTS SECTION (.projects-section / .project-card)
+==================================== */
+
+.projects-section {
+  padding-top: 4.6rem;
+}
+
+.projects-grid {
+  margin-top: 2.3rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+
+.project-card {
+  padding: 1.6rem 1.5rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+}
+
+.project-tag {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-muted);
+  margin-bottom: 0.55rem;
+}
+
+/* ====================================
+   FAQ SECTION (.faq-section / .faq-card)
+==================================== */
+
+.faq-section {
+  padding-top: 4.4rem;
+}
+
+.faq-grid {
+  margin-top: 2.4rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.faq-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.faq-card {
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: rgba(219, 220, 228, 0.94);
+  border: 1px solid rgba(18, 7, 7, 0.16);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.92rem;
+}
+
+.faq-card span:first-child {
+  padding-right: 0.8rem;
+}
+
+.faq-icon {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.faq-panel {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 0.4rem;
+  transition: max-height var(--transition-slow), opacity var(--transition-slow);
+  opacity: 0;
+}
+
+.faq-panel p {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  padding: 0.4rem 0.7rem 0.7rem;
+}
+
+.faq-item.is-open + .faq-panel {
+  max-height: 260px;
+  opacity: 1;
+}
+
+/* ====================================
+   CONTACT SECTION (.contact-section / .contact-card)
+==================================== */
+
+.contact-section {
+  padding-top: 4.6rem;
+  padding-bottom: 5.2rem;
+}
+
+.contact-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 2fr);
+  gap: 2.6rem;
+  padding: 2.4rem 2.3rem 2.3rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+label {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+}
+
+input,
+select,
+textarea {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(1, 7, 44, 0.94);
+  color: var(--color-text);
+  padding: 0.6rem 0.8rem;
+  font: inherit;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(190, 196, 255, 0.6);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px rgba(255, 217, 0, 0.4);
+  background: rgba(3, 13, 70, 0.98);
+}
+
+.form-note {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+/* ====================================
+   FOOTER
+==================================== */
+
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.8rem 0 2.5rem;
+  background: radial-gradient(circle at 0 0, #07157d 0, #010221 65%);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem 2.4rem;
+}
+
+.footer-brand p {
+  margin-top: 0.2rem;
+  color: var(--color-muted);
+  font-size: 0.86rem;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  font-size: 0.86rem;
+}
+
+.footer-nav a {
+  color: var(--color-muted);
+}
+
+.footer-nav a:hover,
+.footer-nav a.is-active {
+  color: var(--color-text);
+}
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+  font-size: 0.84rem;
+  color: var(--color-muted);
+}
+
+.footer-meta a {
+  color: var(--color-text);
+}
+
+/* ====================================
+   SCROLL REVEAL ANIMATIONS
+==================================== */
+
+.reveal-up,
+.reveal-fade {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  transition-delay: var(--delay, 0s);
+}
+
+.reveal-fade {
+  transform: translateY(12px) scale(0.97);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ====================================
+   KEYFRAMES
+==================================== */
+
+@keyframes gridDrift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0) rotate(0.5deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(1deg);
+  }
+}
+
+/* ====================================
+   RESPONSIVE
+==================================== */
+
+@media (max-width: 960px) {
+  .values-grid,
+  .process-grid,
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .why-layout {
+    grid-template-columns: 1.4fr 1.2fr;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .header-inner {
+    padding-block: 0.7rem;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0.9rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.9rem 1rem;
+    border-radius: 18px;
+    background: rgba(2, 8, 58, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+    transform-origin: top right;
+    transform: scale(0.96) translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a,
+  .nav-links .btn-small {
+    width: 100%;
+  }
+
+  .nav-open .nav-links {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1) translateY(0);
+  }
+
+  .nav-open .nav-toggle-line:first-child {
+    transform: translateY(2.5px) rotate(42deg);
+  }
+
+  .nav-open .nav-toggle-line:last-child {
+    transform: translateY(-2px) rotate(-42deg);
+  }
+
+  .hero {
+    padding-top: 4.8rem;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+  }
+
+  .values-grid,
+  .process-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    padding: 1.8rem 1.5rem;
+  }
+}
+
+/* ====================================
+   REDUCED MOTION
+==================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+
+/* Force full nav on all devices – no dropdown */
+.nav-toggle {
+  display: none !important;
+}
+
+.nav-links {
+  position: static !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+
+/* … your existing RESET, VARIABLES, GLOBAL, LAYOUT, HEADER styles … */
+
+/* ========= HEADER TWEAK: logo only ========= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(
+    to bottom,
+    rgba(2, 6, 66, 0.96),
+    rgba(2, 6, 66, 0.82),
+    transparent
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08)
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.9rem;
+}
+
+/* nav container remains for structure but renders nothing */
+.nav {
+  min-width: 0;
+}
+
+/* optional: hide any nav links if present */
+.nav-links {
+  display: none;
+}
+
+/* Right-side animated hero links */
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 3.1fr) minmax(0, 2fr);
+  gap: 3.2rem;
+  align-items: center;
+}
+
+.hero-links-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: auto;
+  transform: rotate(-14deg);
+}
+
+.hero-link-item {
+  position: relative;
+  font-size: 0.95rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 0.2rem 0;
+  transform-origin: left center;
+  animation: heroLinkFloat 10s linear infinite;
+}
+
+.hero-link-item:nth-child(2) {
+  animation-delay: -3.3s;
+}
+
+.hero-link-item:nth-child(3) {
+  animation-delay: -6.6s;
+}
+
+.hero-link-item::after {
+  content: "";
+  position: absolute;
+  left: -1.4rem;
+  top: 50%;
+  width: 0.6rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.hero-link-item:hover::after {
+  transform: translateY(-50%) scaleX(1);
+}
+
+.hero-link-item:hover {
+  color: #ffffff;
+}
+
+/* slow, premium float / scroll-like motion */
+@keyframes heroLinkFloat {
+  0% {
+    transform: translateY(0) rotate(-14deg);
+  }
+  33% {
+    transform: translateY(-6px) rotate(-14deg);
+  }
+  66% {
+    transform: translateY(4px) rotate(-14deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-14deg);
+  }
+}
+
+/* Responsive: stack hero and keep links visible */
+
+@media (max-width: 960px) {
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.4rem;
+  }
+
+  .hero-links-wrapper {
+    margin-left: 0;
+    align-items: flex-end;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-links-wrapper {
+    transform: rotate(-10deg);
+    align-items: flex-start;
+  }
+
+  .hero-link-item {
+    font-size: 0.88rem;
+  }
+}
+
+/* Respect reduced motion: stop float animation */
+@media (prefers-reduced-motion: reduce) {
+  .hero-link-item {
+    animation: none;
+    transform: rotate(-14deg);
+  }
+}
+
+
+
+
+/* Hero text entrance animation */
+
+.hero-title {
+  /* existing styles stay */
+  position: relative;
+}
+
+.hero-title .highlight-inline {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(14px) scale(0.98);
+  animation: heroHighlightIn 0.7s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* stagger the three yellow blocks */
+.hero-title .highlight-inline:nth-of-type(1) {
+  animation-delay: 0.05s;
+}
+.hero-title .highlight-inline:nth-of-type(2) {
+  animation-delay: 0.18s;
+}
+.hero-title .highlight-inline:nth-of-type(3) {
+  animation-delay: 0.31s;
+}
+.hero-title .highlight-inline:nth-of-type(4) {
+  animation-delay: 0.44s;
+}
+
+/* subtitle fade / slide */
+.hero-subtitle {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: heroSubtitleIn 0.7s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+/* hover microinteraction on yellow blocks */
+.hero-title .highlight-inline:hover {
+  transform: translateY(0) scale(1.02);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.65);
+}
+
+/* keyframes */
+
+@keyframes heroHighlightIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0) scale(1.02);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@keyframes heroSubtitleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* accessibility: disable motion if user prefers reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .highlight-inline,
+  .hero-subtitle {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+.metric-value,
+.metric-suffix {
+  display: inline-block;
+}
+
+.metric-suffix {
+  margin-left: 1px;
+}
+
+
+
+
+/* Animated / visible state — JS adds this class */
+.hero-highlight.is-highlight-active::before,
+.highlight-inline.is-highlight-active::before {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* Motion details: calm “akio-style” slide/scale/fade */
+.hero-highlight::before,
+.highlight-inline::before {
+  transition:
+    opacity 520ms cubic-bezier(0.19, 1, 0.22, 1),
+    transform 520ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Optional micro-hover lift, very subtle */
+.hero-highlight:hover::before,
+.highlight-inline:hover::before {
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.75);
+}
+
+/* Accessibility: if reduced motion is requested, show instantly */
+@media (prefers-reduced-motion: reduce) {
+  .hero-highlight::before,
+  .highlight-inline::before {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ==================================================
+   FINAL YELLOW BOX ROLLOUT (AKIO-STYLE, SINGLE SOURCE)
+   ================================================== */
+
+
+/* Reduced motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .highlight-inline::before {
+    transform: scaleX(1);
+    opacity: 1;
+    transition: none;
+  }
+}
+
+/* =========================================
+   ADVANCED WEB — SPECIAL ROLLOUT HIGHLIGHT
+========================================= */
+
+.highlight-rollout {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+/* Yellow box for rollout */
+.highlight-rollout::before {
+  content: "";
+  position: absolute;
+  inset: -0.22em -0.32em;
+  background: var(--color-accent, #ffd900);
+  border-radius: 999px;
+  z-index: -1;
+
+  /* Start hidden */
+  transform-origin: left center;
+  transform: scaleX(0.05);
+  opacity: 0;
+
+  transition:
+    transform 720ms cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 320ms ease;
+}
+
+/* Activated state */
+.highlight-rollout.is-rollout-active::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Subtle premium hover */
+.highlight-rollout:hover::before {
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.75);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .highlight-rollout::before {
+    transform: scaleX(1);
+    opacity: 1;
+    transition: none;
+  }
+}
+
+
+
+/* =========================================
+   ADVANCED WEB — LEFT TO RIGHT ROLLOUT
+   ========================================= */
+
+.hero-title .highlight-inline:not(.js-rotate-word)::before {
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 1;
+}
+
+/* rollout animation */
+.hero-title .highlight-inline:not(.js-rotate-word).is-active::before {
+  transform: scaleX(1);
+}
+
+/* smooth rollout motion */
+.hero-title .highlight-inline:not(.js-rotate-word)::before {
+  transition:
+    transform 720ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+
+
+
+
+/* =========================================
+   ADVANCED WEB — SPECIAL ROLLOUT HIGHLIGHT
+========================================= */
+
+.highlight-rollout {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+/* Yellow box for rollout */
+.highlight-rollout::before {
+  content: "";
+  position: absolute;
+  inset: -0.22em -0.32em;
+  background: var(--color-accent, #ffd900);
+  border-radius: 999px;
+  z-index: -1;
+
+  /* Start hidden */
+  transform-origin: left center;
+  transform: scaleX(0.05);
+  opacity: 0;
+
+  transition:
+    transform 720ms cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 320ms ease;
+}
+
+/* Activated state */
+.highlight-rollout.is-rollout-active::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Subtle premium hover */
+.highlight-rollout:hover::before {
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.75);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .highlight-rollout::before {
+    transform: scaleX(1);
+    opacity: 1;
+    transition: none;
+  }
+}
+
+/* ================================
+   PREMIUM ROLLING WORD FEEL
+================================ */
+
+.highlight-rollout {
+  position: relative;
+  display: inline-block;
+  padding: 0.16em 0.38em;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: #020642;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+
+  /* subtle breathing */
+  animation: bubbleBreath 3.8s ease-in-out infinite;
+}
+
+@keyframes bubbleBreath {
+  0%   { transform: translateX(0) scale(1); }
+  50%  { transform: translateX(2px) scale(1.02); }
+  100% { transform: translateX(0) scale(1); }
+}
+
+.roll-text {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+/* exit motion */
+.roll-out {
+  transform: translateY(-10px) scale(0.96);
+  opacity: 0;
+  filter: blur(2px);
+}
+
+/* enter motion */
+.roll-in {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* smooth premium timing */
+.roll-text {
+  transition:
+    transform 520ms cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 420ms ease,
+    filter 420ms ease;
+}
+
+/* reduced motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .highlight-rollout {
+    animation: none;
+  }
+  .roll-text {
+    transition: none;
+  }
+}
+
+
+/* =========================================
+   DESKTOP — MOVE VALUES TEXT SLIGHTLY RIGHT
+   ========================================= */
+@media (min-width: 1024px) {
+
+  .values-section .section-header {
+    margin-left: 200px; /* ← adjust: 24 / 32 / 48 if needed */
+  }
+
+
+
+/* =========================================
+   TABLET — MOVE VALUES TEXT SLIGHTLY RIGHT
+   ========================================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .values-section .section-header {
+    margin-left: 200px; /* tablet-safe offset */
+  }
+}
+/* =========================================
+   LIFT VALUES SECTION UP (ALL DEVICES)
+   ========================================= */
+.values-section {
+  margin-top: -57px; /* adjust: -40 / -50 / -70 if needed */
+}
+
+}
+/* ====================================
+   HERO GLOBAL LIFT (ALL DEVICES)
+==================================== */
+
+.hero {
+  padding-top: 4.2rem; /* was ~5.4rem */
+}
+
+/* Fine-tune inner content position */
+.hero-inner {
+  transform: translateY(-28px);
+}
+
+
+
+/* =====================================================
+   🧩 PREMIUM EXPERIENCE LAYER (CSS ONLY) — RESPONSIVE FINAL
+   Background • Hero • Yellow • Cards • Logo • Scroll
+   Optimized for Desktop/Tablet/Mobile • GPU-safe • No layout shift
+   ===================================================== */
+
+/* -------------------------------
+   GLOBAL SMOOTHNESS — Device-safe
+-------------------------------- */
+html {
+  scroll-behavior: smooth;
+  /* Mobile Safari safe-scrolling */
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  overflow-x: hidden;
+  /* Prevent mobile zoom issues */
+  touch-action: manipulation;
+}
+
+/* -------------------------------
+   RESPONSIVE CONTAINER SAFETY
+-------------------------------- */
+.container,
+.hero-inner,
+.section {
+  /* Prevent subpixel overflow */
+  contain: layout paint;
+  overflow: hidden;
+}
+
+/* -------------------------------
+   BACKGROUND – subtle living depth
+   Tablet/mobile: reduced intensity
+-------------------------------- */
+.background-layer::before {
+  /* GPU acceleration */
+  will-change: transform;
+  transform: translateZ(0);
+  animation: gridDrift 48s linear infinite;
+}
+
+.background-layer::after {
+  will-change: transform;
+  animation: glowDrift 22s ease-in-out infinite alternate;
+}
+
+@keyframes glowDrift {
+  0% { transform: translateY(0); opacity: 0.75; }
+  100% { transform: translateY(-40px); opacity: 1; }
+}
+
+/* Tablet: slower, subtler */
+@media (max-width: 1024px) {
+  .background-layer::before { animation-duration: 64s; }
+  .background-layer::after { animation-duration: 32s; }
+}
+
+/* Mobile: minimal motion */
+@media (max-width: 640px) {
+  .background-layer::before { animation-duration: 80s; opacity: 0.2; }
+  .background-layer::after { animation-duration: 40s; opacity: 0.6; }
+}
+
+/* -------------------------------
+   LOGO – intentional presence
+   Touch-safe hover
+-------------------------------- */
+.brand-logo {
+  transition: transform 600ms cubic-bezier(0.19,1,0.22,1), opacity 600ms ease;
+  /* Prevent touch hover conflicts */
+  will-change: transform;
+}
+
+.site-header:hover .brand-logo {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+/* Mobile: no hover, always crisp */
+@media (hover: none) and (pointer: coarse) {
+  .site-header:hover .brand-logo {
+    transform: none;
+  }
+}
+
+/* -------------------------------
+   HERO – never feels static
+   Responsive intensity
+-------------------------------- */
+.hero {
+  position: relative;
+  /* Contain animation painting */
+  contain: paint;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: clamp(-15%, -20%, -20%);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,217,0,0.08), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(120,140,255,0.15), transparent 50%);
+  animation: heroAmbient 28s linear infinite;
+  pointer-events: none;
+  /* GPU layer */
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@keyframes heroAmbient {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Tablet: slower rotation */
+@media (max-width: 1024px) {
+  .hero::after { animation-duration: 36s; }
+}
+
+/* Mobile: static gradient, no rotation */
+@media (max-width: 640px) {
+  .hero::after { 
+    animation: none;
+    background:
+      radial-gradient(circle at 30% 40%, rgba(255,217,0,0.06), transparent 50%),
+      radial-gradient(circle at 70% 60%, rgba(120,140,255,0.1), transparent 50%);
+  }
+}
+
+/* -------------------------------
+   YELLOW HIGHLIGHTS – premium bubbles
+   Consistent across all devices
+-------------------------------- */
+.highlight-inline {
+  position: relative;
+  isolation: isolate;
+  /* Text stability */
+  contain: layout;
+}
+
+.highlight-inline::before {
+  content: "";
+  position: absolute;
+  inset: -0.28em -0.4em;
+  background: var(--color-accent, #dabc12);
+  border-radius: 999px;
+  z-index: -1;
+  /* GPU-safe initial state */
+  will-change: transform, opacity;
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0;
+  /* Premium easing + shadow */
+  transition:
+    transform 720ms cubic-bezier(0.19,1,0.22,1),
+    opacity 360ms ease-out,
+    box-shadow 360ms ease-out;
+}
+
+.highlight-inline.is-active::before {
+  transform: scaleX(1);
+  opacity: 1;
+  box-shadow: 0 28px 70px rgba(4, 11, 73, 0.65);
+}
+
+/* Hover: refined for touch */
+.highlight-inline:hover::before {
+  box-shadow: 0 34px 90px rgba(14, 4, 60, 0.8);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .highlight-inline:hover::before {
+    box-shadow: 0 28px 70px rgba(53, 53, 53, 0.771);
+  }
+}
+
+/* -------------------------------
+   VALUES TEXT – calm authority
+   Responsive lift distance
+-------------------------------- */
+.values-section .section-header {
+  transition: transform 600ms cubic-bezier(0.19,1,0.22,1);
+  will-change: transform;
+}
+
+.values-section .section-header:hover {
+  transform: translateY(-4px);
+}
+
+/* Tablet: smaller lift */
+@media (max-width: 1024px) {
+  .values-section .section-header:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* -------------------------------
+   CARDS – interactive but subtle
+   Device-appropriate motion
+-------------------------------- */
+.values-card {
+  transition:
+    transform 420ms cubic-bezier(0.19,1,0.22,1),
+    box-shadow 420ms cubic-bezier(0.19,1,0.22,1),
+    background 420ms ease;
+  /* GPU layer */
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
+}
+
+
+/* Tablet: reduced lift */
+@media (max-width: 1024px) {
+  .values-card:hover {
+    transform: translateY(-6px);
+  }
+}
+
+/* Mobile: minimal lift, touch-safe */
+@media (max-width: 640px), (hover: none) and (pointer: coarse) {
+  .values-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(16, 4, 177, 0.5);
+  }
+}
+
+/* -------------------------------
+   BUTTON – confident CTA
+   Responsive shadow depth
+-------------------------------- */
+.btn-primary {
+  transition:
+    transform 300ms cubic-bezier(0.19,1,0.22,1),
+    box-shadow 300ms cubic-bezier(0.19,1,0.22,1);
+  will-change: transform;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 55px rgba(0,0,0,0.7);
+}
+
+/* Mobile: smaller lift */
+@media (max-width: 640px) {
+  .btn-primary:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* -------------------------------
+   RESPONSIVE TYPE SAFETY
+-------------------------------- */
+/* Prevent font loading layout shift */
+.hero-title,
+h1, h2, h3 {
+  font-display: swap;
+}
+
+/* -------------------------------
+   REDUCED MOTION SAFETY — Enhanced
+-------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  /* Force final states */
+  .highlight-inline::before {
+    transform: scaleX(1) !important;
+    opacity: 1 !important;
+  }
+
+  /* No hover states */
+  .values-card:hover,
+  .btn-primary:hover,
+  .highlight-inline:hover::before,
+  .site-header:hover .brand-logo {
+    transform: none !important;
+    box-shadow: initial !important;
+  }
+}
+
+/* -------------------------------
+   HIGH-DPI & MOBILE REFINE
+-------------------------------- */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .background-layer::before {
+    background-size: 24px 24px;
+  }
+}
+
+/* iOS Safari viewport fixes */
+@supports (padding: max(0px)) {
+  body {
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}
+
+/* ==========================================================================
+   ✅ RESPONSIVE FINAL — Paste at bottom of style.css
+   
+   ✓ Desktop: Full premium motion
+   ✓ Tablet: Reduced intensity (1024px)
+   ✓ Mobile: Minimal motion (640px) 
+   ✓ Touch-safe: No hover conflicts
+   ✓ GPU-safe: transform/opacity only
+   ✓ Zero layout shift: contain/layout
+   ✓ Reduced motion: Fully compliant
+   ========================================================================== */
+/*
+/* Premium Ambient Background Rotation - Shared across all pages */
+.background-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0); /* GPU layer promotion */
+}
+
+.background-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    /* Layer 1: Deep indigo glow */
+    radial-gradient(circle at 20% 80%, rgba(88, 101, 242, 0.28) 0%, transparent 52%),
+    /* Layer 2: Soft rose accent */
+    radial-gradient(circle at 80% 20%, rgba(244, 143, 177, 0.25) 0%, transparent 50%),
+    /* Layer 3: Cool cyan highlight */
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.22) 0%, transparent 48%),
+    /* Layer 4: Subtle violet mist */
+    radial-gradient(circle at 60% 90%, rgba(168, 85, 247, 0.18) 0%, transparent 50%),
+    /* Base gradient overlay */
+    linear-gradient(135deg, #2841bf 0%, #56168a 40%, #0f1423 100%);
+  
+  background-size: 420% 420%; /* Oversized for fluid rotation */
+  animation: ambientRotate linear infinite;
+  opacity: 1;
+}
+
+/* Desktop: Standard premium rotation (≥1025px) */
+@media (min-width: 1025px) {
+  .background-layer::after {
+    animation-duration: 70s;
+    opacity: 1;
+  }
+}
+
+/* Tablet: Slower, more subtle (641px - 1024px) */
+@media (max-width: 1024px) and (min-width: 641px) {
+  .background-layer::after {
+    animation-duration: 60s;
+    opacity: 0.92;
+    background-size: 380% 380%;
+  }
+}
+
+/* Mobile: Very slow, reduced intensity (≤640px) */
+@media (max-width: 640px) {
+  .background-layer::after {
+    animation-duration: 50s; /* Very slow, battery-friendly */
+    opacity: 1;
+    background-size: 340% 340%;
+  }
+}
+
+/* Accessibility: Complete motion reduction */
+@media (prefers-reduced-motion: reduce) {
+  .background-layer::after {
+    animation: none !important;
+    background-size: 300% 300%;
+    opacity: 0.85;
+  }
+}
+
+/* Core rotation animation - GPU optimized */
+@keyframes ambientRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+
+/* =====================================================
+   🚫 HARD STOP — REMOVE ALL AMBIENT BACKGROUND MOTION
+   Applies to Desktop • Tablet • Mobile
+===================================================== */
+
+/* Kill ALL background pseudo animations */
+.background-layer,
+.background-layer::before,
+.background-layer::after {
+  animation: none !important;
+  transform: none !important;
+  will-change: auto !important;
+}
+
+/* Kill hero ambient rotation */
+.hero::after {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Disable any glow / drift animations globally */
+@keyframes ambientRotate {}
+@keyframes heroAmbient {}
+@keyframes glowDrift {}
+@keyframes gridDrift {}
+
+/* Safety: prevent future animation reintroduction */
+.background-layer *,
+.hero::after {
+  animation-play-state: paused !important;
+}
+
+/* About Section - Premium Editorial Enhancement */
+.about-section {
+  position: relative;
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 60% 40% at 10% 90%, rgba(120, 119, 198, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 90% 20%, rgba(255, 119, 198, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Eyebrow - Subtle glow, wide spacing */
+.about-eyebrow {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.about-eyebrow::after {
+  content: '';
+  position: absolute;
+  bottom: -0.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(120, 219, 255, 0.6), transparent);
+}
+
+/* Headline - Strong, centered */
+.about-headline {
+  max-width: 70ch;
+  margin: 0 auto 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Body text - Muted editorial tone */
+.about-text {
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 70ch;
+  margin: 0 auto 5rem;
+  line-height: 1.75;
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+}
+
+/* Cards container - Left-weighted editorial grid */
+.about-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  max-width: 85ch;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .about-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* Individual cards - Gradient depth + subtle lift */
+.about-card {
+  background: rgba(15, 15, 35, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 2.5rem 2rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(20px);
+  opacity: 0;
+  will-change: transform, opacity;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(120, 219, 255, 0.05) 0%, rgba(88, 101, 242, 0.03) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px) translateZ(0);
+  background: rgba(20, 20, 45, 0.75);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.about-card:hover::before {
+  opacity: 1;
+}
+
+/* Card content stays stable */
+.about-card h3,
+.about-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.about-card h3 {
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Scroll reveal stagger */
+.about-card:nth-child(1) { transition-delay: 0ms; }
+.about-card:nth-child(2) { transition-delay: 120ms; }
+.about-card:nth-child(3) { transition-delay: 240ms; }
+
+.about-card.animate {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Reduced motion - Static final states */
+@media (prefers-reduced-motion: reduce) {
+  .about-card {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  
+  .about-card:hover {
+    transform: none !important;
+  }
+}
+
+/* Mobile refinements */
+@media (max-width: 640px) {
+  .about-section {
+    padding: 3rem 1.5rem;
+  }
+  
+  .about-cards {
+    grid-template-columns: 1fr;
+    max-width: none;
+    gap: 2rem;
+  }
+}
+
+
+/* =====================================================
+   ABOUT PAGE — SPACING & MASK FIX (SAFE OVERRIDE)
+   Targets existing classes only
+===================================================== */
+
+/* Space between heading block and cards */
+.about-section .section-header {
+  margin-bottom: clamp(1rem, 6vw, 5rem);
+}
+
+/* About cards container spacing */
+.about-grid {
+  display: grid;
+  gap: clamp(1.3rem, 3vw, 2.4rem); /* space BETWEEN cards */
+}
+
+/* Individual masked pill size */
+.about-grid .why-card {
+  padding: clamp(1.6rem, 3vw, 2.2rem)
+            clamp(1.8rem, 3vw, 2.6rem);
+  border-radius: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+/* Title spacing inside pill */
+.about-grid .why-card h3 {
+  margin-bottom: 0.6rem;
+}
+
+/* Text breathing */
+.about-grid .why-card p {
+  line-height: 1.65;
+}
+
+/* Tablet refinement */
+@media (max-width: 1024px) {
+  .about-grid {
+    gap: 1.8rem;
+  }
+}
+
+/* Mobile comfort */
+@media (max-width: 640px) {
+  .about-grid .why-card {
+    padding: 1.4rem 1.4rem;
+  }
+}
+
+
+
+/* =====================================================
+   ABOUT PAGE — FIX CARD SPACING & MASKED AREA
+   (NO OTHER SECTIONS AFFECTED)
+   ===================================================== */
+
+/* Grid spacing */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.4rem;              /* space BETWEEN cards */
+  margin-top: 3.2rem;      /* space from heading */
+}
+
+/* Individual card breathing room */
+.about-grid .why-card {
+  padding: 2.4rem 2.2rem;  /* internal spacing */
+  border-radius: 28px;     /* smoother mask */
+}
+
+/* Space between title and text inside card */
+.about-grid .why-card h3 {
+  margin-bottom: 0.8rem;
+}
+
+.about-grid .why-card p {
+  line-height: 1.7;
+}
+
+/* =========================
+   TABLET (≤960px)
+   ========================= */
+@media (max-width: 960px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2.8rem;
+  }
+
+  .about-grid .why-card {
+    padding: 2.2rem 2rem;
+  }
+}
+
+/* =========================
+   MOBILE (≤640px)
+   ========================= */
+@media (max-width: 640px) {
+  .about-grid {
+    gap: 1.8rem;
+    margin-top: 2.4rem;
+  }
+
+  .about-grid .why-card {
+    padding: 1.9rem 1.6rem;
+    border-radius: 24px;
+  }
+}
+
+
+/* =========================================
+   ABOUT HEADER — SAFE LIFT (NO ANIMATION CONFLICT)
+   ========================================= */
+
+.about-section .section-header {
+  margin-top: -60px;
+}
+
+/* Tablet */
+@media (max-width: 960px) {
+  .about-section .section-header {
+    margin-top: -36px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .about-section .section-header {
+    margin-top: -24px;
+  }
+}
+
+
+/* =====================================================
+   WHY-US PAGE — CARD SPACING & BREATHING (SAFE OVERRIDE)
+   No HTML changes • No animation conflicts
+===================================================== */
+
+/* Space between header and cards */
+.why-section .why-layout {
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+/* Increase space BETWEEN left & right cards */
+.why-layout {
+  gap: clamp(2rem, 4vw, 3.2rem);
+}
+
+/* Card internal padding (more premium feel) */
+.why-card {
+  padding: clamp(2rem, 4vw, 3rem);
+}
+
+/* Left card title spacing */
+.why-left-title {
+  margin-bottom: 1.8rem;
+}
+
+/* Space between feature blocks */
+.why-left-item + .why-left-item {
+  margin-top: 1.8rem;
+  padding-top: 1.6rem;
+}
+
+/* Text breathing inside cards */
+.why-left-item p,
+.why-side p {
+  line-height: 1.75;
+}
+
+/* Question list spacing */
+.why-questions {
+  margin: 1.2rem 0 1.6rem;
+}
+
+.why-questions li + li {
+  margin-top: 0.6rem;
+}
+
+/* =========================
+   TABLET (≤960px)
+   ========================= */
+@media (max-width: 960px) {
+  .why-layout {
+    gap: 2.4rem;
+  }
+
+  .why-card {
+    padding: 2.4rem;
+  }
+}
+
+/* =========================
+   MOBILE (≤640px)
+   ========================= */
+@media (max-width: 640px) {
+  .why-layout {
+    margin-top: 2.4rem;
+    gap: 2rem;
+  }
+
+  .why-card {
+    padding: 1.9rem 1.7rem;
+  }
+
+  .why-left-title {
+    margin-bottom: 1.4rem;
+  }
+
+  .why-left-item + .why-left-item {
+    margin-top: 1.4rem;
+    padding-top: 1.2rem;
+  }
+}
+
+
+
+/* =========================================
+   REMOVE CARD SHADOWS ONLY (GLOBAL SAFE)
+   ========================================= */
+
+/* All glass / card components */
+.glass,
+.values-card,
+.process-card,
+.project-card,
+.why-card,
+.why-left,
+.why-side,
+.about-grid .why-card {
+  box-shadow: none !important;
+}
+
+/* Prevent shadow appearing on hover */
+.glass:hover,
+.values-card:hover,
+.process-card:hover,
+.project-card:hover,
+.why-card:hover {
+  box-shadow: none !important;
+}
+
+
+/* =========================================
+   REMOVE BUTTON SHADOWS ONLY (SAFE)
+   ========================================= */
+
+/* Primary CTA button */
+.btn-primary {
+  box-shadow: none !important;
+}
+
+/* Kill shadow on hover / focus / active */
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  box-shadow: none !important;
+}
+
+
+/* =====================================================
+   UNIFY CARD COLORS — PHASE + WHY-US + ABOUT
+   No layout / no animation / no hover changes
+   ===================================================== */
+
+/* Base unified card surface */
+.glass,
+.process-card,
+.process-card--primary,
+.why-card,
+.about-card,
+.values-card {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(34, 46, 119, 0.92) 0%,
+      rgba(12, 18, 64, 0.92) 100%
+    ) !important;
+
+  box-shadow: none !important;      /* no dark shadow */
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+
+
+/* =====================================================
+   REMOVE ROTATED TEXT LINKS — ALL DEVICES
+   Emergency override for .hero-links-wrapper & rotated text
+   ===================================================== */
+
+/* Hide the entire rotated links container */
+.hero-links-wrapper,
+.hero-gallery,
+[class*="hero-link"],
+[class*="gallery-item"] {
+  display: none !important;
+}
+
+/* Kill any rotated text positioning */
+[class*="hero-link-item"],
+.gallery-item,
+.gallery-item-text {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transform: none !important;
+}
+
+/* Reset hero layout to single column (no right-side distortion) */
+.hero-inner {
+  grid-template-columns: 1fr !important;
+  gap: 2rem !important;
+}
+
+
+/* Hero-specific cleanup */
+.hero-orbit-wrapper,
+.hero-links-wrapper {
+  display: none !important;
+}
+
+/* Mobile/tablet cleanup */
+@media (max-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Force cleanup even if classes vary */
+[class*="hero-"][class*="link"],
+[class*="hero-"][class*="gallery"],
+[style*="rotate"],
+[style*="transform"][class*="hero"] {
+  display: none !important;
+}
+
+/* =====================================================
+   ✅ ADDED TO BOTTOM OF style.css — IMMEDIATE EFFECT
+   Removes ALL rotated text from hero on ALL devices
+   ===================================================== */
+
+
+   /* ==================================
+   MOBILE ONLY — LIFT VALUES SECTION
+   ================================== */
+@media (max-width: 640px) {
+  .values-section {
+    margin-top: -60px;   /* lift upward */
+  }
+}
+
+
+
+
+
+/* =====================================================
+   FAB NAV — FIXED VERSION (ALL 4 ITEMS VISIBLE)
+   ===================================================== */
+.fab-nav-container {
+  --fab-size: 64px;
+  --fab-bg: linear-gradient(135deg, #4b24d8 0%, #3e37bc 100%);
+  --fab-glow: rgba(39, 32, 167, 0.859);
+  
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.fab-nav-btn {
+  position: relative;
+  width: var(--fab-size);
+  height: var(--fab-size);
+  background: var(--fab-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 
+    0 12px 40px var(--fab-glow),
+    0 4px 20px rgba(0,0,0,0.3);
+  transition: all 400ms cubic-bezier(0.23,1,0.320,1);
+  border: none;
+  outline: none;
+}
+
+.fab-nav-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 20px 60px var(--fab-glow),
+    0 8px 32px rgba(0,0,0,0.4);
+}
+
+.fab-nav-plus {
+  font-size: 28px;
+  font-weight: 300;
+  color: white;
+  line-height: 1;
+  transition: all 300ms ease;
+}
+
+.fab-nav-btn[aria-expanded="true"] .fab-nav-plus {
+  transform: none;
+}
+
+/* FIXED: All 4 items positioned correctly */
+.fab-nav-item {
+  position: absolute;
+  bottom: calc(var(--fab-size) / 2);
+  right: calc(var(--fab-size) / 2);
+  width: var(--fab-size);
+  height: var(--fab-size);
+  background: var(--fab-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 500ms cubic-bezier(0.23,1,0.320,1);
+  box-shadow: 0 8px 32px var(--fab-glow);
+  overflow: hidden;
+}
+
+/* ✅ CORRECT SPACING FOR ALL 4 ITEMS */
+.fab-nav-item-1 { transform: scale(0) translateY(120px); transition-delay: 50ms; }
+.fab-nav-item-2 { transform: scale(0) translateY(96px);  transition-delay: 100ms; }
+.fab-nav-item-3 { transform: scale(0) translateY(72px);  transition-delay: 150ms; }
+.fab-nav-item-4 { transform: scale(0) translateY(48px);  transition-delay: 200ms; }
+
+.fab-nav-icon {
+  font-size: 24px;
+  opacity: 0;
+  transition: opacity 250ms ease 100ms;
+}
+
+/* ✅ OPEN STATE — ALL ITEMS VISIBLE */
+.fab-nav-btn[aria-expanded="true"] ~ .fab-nav-item {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fab-nav-btn[aria-expanded="true"] ~ .fab-nav-item-1 { transform: scale(1) translateY(-200px); }
+.fab-nav-btn[aria-expanded="true"] ~ .fab-nav-item-2 { transform: scale(1) translateY(-160px); }
+.fab-nav-btn[aria-expanded="true"] ~ .fab-nav-item-3 { transform: scale(1) translateY(-120px); }
+.fab-nav-btn[aria-expanded="true"] ~ .fab-nav-item-4 { transform: scale(1) translateY(-80px); }
+
+.fab-nav-btn[aria-expanded="true"] ~ .fab-nav-item .fab-nav-icon {
+  opacity: 1;
+}
+
+/* Pill expansion */
+.fab-nav-btn[aria-expanded="true"] ~ .fab-nav-item {
+  border-radius: 32px;
+  width: 160px;
+  height: var(--fab-size);
+  right: calc(var(--fab-size) / 2 - 80px);
+}
+
+.fab-nav-label {
+  opacity: 0;
+  transform: translateX(12px);
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  transition: all 300ms cubic-bezier(0.23,1,0.320,1) 200ms;
+  margin-left: 16px;
+}
+
+.fab-nav-btn[aria-expanded="true"] ~ .fab-nav-item .fab-nav-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* CTA */
+.fab-nav-cta {
+  background: linear-gradient(135deg, #ffd900 0%, #fbbf24 100%);
+  box-shadow: 0 12px 40px rgba(255, 217, 0, 0.5);
+}
+
+.fab-nav-cta .fab-nav-icon,
+.fab-nav-cta .fab-nav-label {
+  color: #462dc6;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .fab-nav-container {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .fab-nav-btn {
+    --fab-size: 56px;
+  }
+}
+
+/* Touch-safe */
+@media (hover: none) and (pointer: coarse) {
+  .fab-nav-btn:hover {
+    transform: none;
+  }
+}
+
+/* Accessibility */
+.fab-nav-btn:focus-visible {
+  box-shadow: 
+    0 0 0 4px rgba(255,255,255,0.5),
+    0 12px 40px var(--fab-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab-nav-btn,
+  .fab-nav-item * {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+
+
+
+/* ===============================
+   ChatGPT-style Plus Menu (SAFE)
+================================ */
+
+#plusMenuRoot {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+}
+
+/* Plus button */
+#plusToggle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #4322e8;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* Menu container */
+#plusMenu {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Menu visible */
+#plusMenuRoot.open #plusMenu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Menu items */
+#plusMenu a {
+  background: linear-gradient(135deg, #ffd900 0%, #fbbf24 100%);
+  color: #111;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+#plusMenu a:hover {
+  background: #eaf078;
+}
+
+
+
+
+/* ===============================
+   CHATGPT-STYLE PLUS MENU (CSS ONLY)
+   =============================== */
+
+#plusMenuRoot {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+}
+
+/* Plus Button */
+#plusToggle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  background: #3b35ff;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.19,1,0.22,1),
+              box-shadow 0.45s ease;
+  box-shadow: 0 12px 30px rgba(59,53,255,0.45);
+}
+
+/* Rotate when active */
+#plusMenuRoot:hover #plusToggle,
+#plusToggle:focus {
+  transform: rotate(45deg);
+  box-shadow: 0 18px 45px rgba(59,53,255,0.6);
+}
+
+/* Menu container */
+#plusMenu {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  pointer-events: none;
+}
+
+/* Menu buttons */
+#plusMenu a {
+  background: #ffd400;
+  color: #111;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transition: all 0.45s cubic-bezier(0.19,1,0.22,1);
+  box-shadow: 0 12px 30px rgba(255,212,0,0.35);
+}
+
+/* Reveal animation */
+#plusMenuRoot:hover #plusMenu {
+  pointer-events: auto;
+}
+
+#plusMenuRoot:hover #plusMenu a {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger effect */
+#plusMenu a:nth-child(1){ transition-delay: 0.05s }
+#plusMenu a:nth-child(2){ transition-delay: 0.1s }
+#plusMenu a:nth-child(3){ transition-delay: 0.15s }
+#plusMenu a:nth-child(4){ transition-delay: 0.2s }
+
+/* Hover glow */
+#plusMenu a:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.3),
+    0 18px 45px rgba(255,212,0,0.55);
+}
+
+/* Mobile safe */
+@media (hover: none) {
+  #plusMenuRoot:hover #plusMenu a {
+    transform: none;
+  }
+}
+
+#plusMenu a {
+  font-weight: 700;
+  letter-spacing: 0.025em;
+}
+#plusMenu a {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+#plusMenu a:hover {
+  transform: translateX(-4px);
+}
+
+
+
+/* =========================================
+   MOBILE — FASTER GRID / SQUARE ROTATION
+   Smooth & Battery Friendly
+========================================= */
+@media (max-width: 640px) {
+  .background-layer::after {
+    animation-duration: 36s; /* was 50–65s */
+    will-change: transform;
+    transform-origin: center center;
+  }
+}
+
+  /* Contact / form section lift */
+  .contact-section,
+  .contact-wrapper,
+  .contact-card {
+    margin-top: -20px;
+  }
+
+
+   /* PROCESS section lift */
+  .process-section,
+  .how-projects-flow {
+    margin-top: -40px;
+  }
+
+  /* Cards grid tightening */
+  .process-grid,
+  .values-grid {
+    margin-top: 24px;
+    gap: 20px;
+  }
+
+/* ================================
+   CONTACT CARD – MOBILE WIDTH FIX
+   ================================ */
+@media (max-width: 640px) {
+
+  body[data-page="contact"] .glass,
+  body[data-page="contact"] .contact-card,
+  body[data-page="contact"] .contact-wrapper {
+    width: calc(100% - 24px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+/* ====================================
+   MOBILE – Lift HOME hero slightly
+==================================== */
+@media (max-width: 640px) {
+  body[data-page="home"] .hero-section {
+    margin-top: -2.2rem; /* lift up */
+  }
+}
+/* ====================================
+   MOBILE – Lift WHY-US intro slightly
+==================================== */
+@media (max-width: 640px) {
+  body[data-page="why-us"] .section:first-of-type {
+    margin-top: -2rem;
+  }
+}
+
+
+
+
+/* =========================================
+   FIX PLUS MENU — FORCE VISIBILITY
+========================================= */
+#plusMenuRoot {
+  pointer-events: auto !important;
+}
+
+#plusMenu {
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+#plusMenuRoot.open #plusMenu {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Ensure button always visible */
+#plusToggle {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =====================================================
+   TABLET ONLY — TOP FLOATING PILL MENU (OPTION 2)
+   No JS • No hover • No layout break
+===================================================== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  /* Root reposition */
+  #plusMenuRoot {
+    position: fixed;
+    top: 10px;
+    left: 75%;
+    right: auto;
+    bottom: auto;
+    transform: translateX(-50%);
+    z-index: 9999;
+  }
+
+  /* Hide plus button (not needed on tablet) */
+  #plusToggle {
+    display: none;
+  }
+
+  /* Menu container → horizontal */
+  #plusMenu {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Menu pills */
+  #plusMenu a {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+
+    padding: 10px 20px;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+
+    background: linear-gradient(135deg, #ffd900, #fbbf24);
+    color: #111;
+
+    box-shadow: none;
+  }
+
+  /* Subtle premium hover (tablet supports tap + hover hybrid) */
+  #plusMenu a:hover {
+    transform: translateY(-1px);
+    background: #ffdf3a;
+  }
+}
+
+
+/* =========================================
+   TABLET ONLY — HIDE PLUS ICON
+   (768px–1024px)
+   ========================================= */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #plusToggle {
+    display: none !important;
+  }
+}
+
+
+/* =====================================================
+   TABLET ONLY — LIFT FIXED FOOTER UP SLIGHTLY
+   ===================================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .site-footer {
+    bottom: 10px !important;   /* 👈 lift up (adjust if needed) */
+  }
+
+  /* Match body spacing so content still clears footer */
+  body {
+    padding-bottom: 10px;     /* footer height + lift */
+  }
+
+}
+
+
+/* ====================================
+   REMOVE BACKGROUND GRID — ALL DEVICES
+   ==================================== */
+
+/* Kill the grid overlay completely */
+.background-layer::before {
+  display: none !important;
+}
+
+
+
+/* =====================================================
+   🚨 HARD LAPTOP OVERRIDE — CLICK ONLY MENU
+   Devices with mouse + fine pointer (laptops/desktops)
+   ===================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+
+  /* ❌ COMPLETELY DISABLE HOVER OPENING */
+  #plusMenuRoot:hover #plusMenu,
+  #plusMenuRoot:hover #plusMenu a {
+    opacity: 0 !important;
+    transform: translateY(12px) scale(0.96) !important;
+    pointer-events: auto !important;
+  }
+
+  /* ✅ FORCE CLOSED BY DEFAULT */
+  #plusMenu {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(12px) scale(0.96) !important;
+  }
+
+  #plusMenu a {
+    opacity: 0 !important;
+    transform: translateY(12px) scale(0.96) !important;
+  }
+
+  /* ✅ OPEN ONLY VIA JS (.open CLASS) */
+  #plusMenuRoot.open #plusMenu {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  #plusMenuRoot.open #plusMenu a {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+}
+
+
+
+/* =========================================
+   🔴 DISABLE ALL BACKGROUND ANIMATIONS
+   CSS ONLY — SAFE OVERRIDE
+========================================= */
+
+/* Kill background container completely */
+
+/* Extra safety: hide all background elements */
+#bgCanvas,
+.orb,
+.orb-left,
+.orb-right {
+  display: none !important;
+}
+
+/* Remove ambient grid & glow layers */
+.background-layer::before,
+.background-layer::after {
+  content: none !important;
+  animation: none !important;
+}
+
+
+
+/* ============ Scroll-driven 3D Illusion Background ============ */
+/* Shared base styles for all pages */
+.scroll-illusion-bg {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(520px, 70vw);
+  height: min(520px, 70vw);
+  z-index: -1; /* Always behind content */
+  pointer-events: none; /* Never blocks interaction */
+  transform-origin: center center;
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 0.75;
+  transition: opacity 220ms ease-out; /* subtle hover-like feel on page load */
+}
+
+/* Respect motion preferences: keep static if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-illusion-bg {
+    transition: none;
+  }
+}
+
+/* ---------- Per‑page visual identity ---------- */
+/* Home → soft sphere/blob (growth, creativity) */
+body[data-page="home"] .scroll-illusion-bg {
+   border-radius: 24%;
+  background:
+    linear-gradient(135deg, rgba(255, 225, 120, 0.75), rgba(96, 11, 223, 0.9)),
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.22), transparent 55%);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 40px rgba(255, 255, 255, 0.12);
+}
+
+/* About → rounded cube (structure, people) */
+body[data-page="about"] .scroll-illusion-bg {
+  border-radius: 24%;
+  background:
+    linear-gradient(135deg, rgba(255, 225, 120, 0.75), rgba(223, 135, 11, 0.9)),
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.22), transparent 55%);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 40px rgba(255, 255, 255, 0.12);
+}
+
+/* Process → multi‑edge pentagon (steps, flow) */
+body[data-page="process"] .scroll-illusion-bg {
+    border-radius: 24%;
+  background:
+    linear-gradient(135deg, rgba(255, 225, 120, 0.75), rgba(67, 209, 16, 0.9)),
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.22), transparent 55%);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 40px rgba(255, 255, 255, 0.12);
+}
+
+/* Why‑Us → ring / hollow circle (partnership) */
+body[data-page="why-us"] .scroll-illusion-bg {
+  border-radius: 24%;
+  background:
+    linear-gradient(135deg, rgba(240, 190, 10, 0.75), rgba(232, 14, 65, 0.9)),
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.22), transparent 55%);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 40px rgba(255, 255, 255, 0.12);
+}
+
+/* Contact → diamond / kite (direction, action) */
+body[data-page="contact"] .scroll-illusion-bg {
+   border-radius: 24%;
+  background:
+    linear-gradient(135deg, rgba(255, 225, 120, 0.75), rgba(145, 11, 223, 0.9)),
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.22), transparent 55%);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 40px rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- Responsive tuning ---------- */
+/* Desktop: strong presence */
+@media (min-width: 1024px) {
+  .scroll-illusion-bg {
+    width: min(560px, 60vw);
+    height: min(560px, 60vw);
+    opacity: 0.82;
+  }
+}
+
+/* Tablets: slightly reduced */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .scroll-illusion-bg {
+    width: min(460px, 65vw);
+    height: min(460px, 65vw);
+    opacity: 0.7;
+  }
+}
+
+/* Mobile: subtle, lighter & smaller */
+@media (max-width: 767.98px) {
+  .scroll-illusion-bg {
+    width: min(360px, 90vw);
+    height: min(500px, 90vw);
+    opacity: 0.45;
+    size: 10%;
+    margin-top: 40%;
+  }
+}
+/* =========================================
+   PREMIUM DEPTH CUES (ADDITIVE ONLY)
+========================================= */
+
+.scroll-illusion-bg {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Slight sharpening when large */
+.scroll-illusion-bg.is-near {
+  filter: blur(0px);
+  opacity: 0.88;
+}
+
+/* Slight softness when small */
+.scroll-illusion-bg.is-far {
+  filter: blur(0.6px);
+  opacity: 0.55;
+}
+
+
+/* ===============================
+   KINETIC 3D SYSTEM (ADDITIVE)
+=============================== */
+
+/* Shared rotation base */
+.scroll-illusion-bg {
+  animation: slowSpin 60s linear infinite;
+}
+
+/* Secondary shapes */
+.scroll-illusion-bg.secondary {
+  opacity: 0.25;
+  filter: blur(1.2px);
+}
+
+/* Position offsets */
+.scroll-illusion-bg.s1 {
+  transform-origin: center;
+  top: 35%;
+  left: 30%;
+  animation-duration: 90s;
+}
+
+.scroll-illusion-bg.s2 {
+  top: 65%;
+  left: 70%;
+  animation-duration: 120s;
+}
+
+/* Shapes for secondary */
+.scroll-illusion-bg.secondary {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255,217,0,0.35), transparent 65%);
+}
+
+/* Rotation animation */
+@keyframes slowSpin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* Reduce motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-illusion-bg {
+    animation: none;
+  }
+}
+
+/* ===============================
+   PREMIUM SINGLE-COLOR CURSOR
+================================ */
+
+.cursor-blob {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+
+  /* 🎨 premium golden-ice blend */
+  background: radial-gradient(
+    circle at 35% 35%,
+    #d9df95 0%,
+    #e6b908 35%,
+    #e76406 100%
+  );
+
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+  filter: blur(0);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.19,1,0.22,1),
+    filter 0.35s ease;
+}
+
+/* Inner glow for depth */
+.cursor-blob span {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.45),
+    transparent 70%
+  );
+  filter: blur(10px);
+}
+
+/* Visible */
+.cursor-blob.is-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Idle dissolve */
+.cursor-blob.is-idle {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+  filter: blur(6px);
+}
+
+/* Mobile comfort */
+@media (max-width: 768px) {
+  .cursor-blob {
+    width: 12px;
+    height: 12px;
+    opacity: 0.7;
+  }
+}
+
+
+@keyframes softPulse {
+  0%   { filter: brightness(1); }
+  50%  { filter: brightness(1.12); }
+  100% { filter: brightness(1); }
+}
+
+.cursor-blob.is-visible {
+  animation: softPulse 6s ease-in-out infinite;
+}
+
+
+/* ===============================
+   PREMIUM CURSOR STATES
+================================ */
+
+.cursor-blob {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+  filter: blur(8px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.19,1,0.22,1),
+    filter 0.35s ease;
+}
+
+/* Active (moving / touching) */
+.cursor-blob.is-active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  filter: blur(0);
+}
+
+/* Idle (no interaction) */
+.cursor-blob.is-idle {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+  filter: blur(10px);
+}
+
+
+
+
+/* ===============================
+   FLUID CURSOR TAIL (DIV BASED)
+================================ */
+
+.cursor-fluid-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99998; /* just below cursor blob */
+}
+
+.cursor-fluid-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle,
+    rgba(255,230,150,0.55),
+    rgba(255,160,40,0.15),
+    transparent 70%
+  );
+
+  filter: blur(2px);
+  transform: translate3d(-50%, -50%, 0) scale(1);
+  opacity: 0;
+
+  will-change: transform, opacity;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .cursor-fluid-dot {
+    width: 8px;
+    height: 8px;
+    filter: blur(3px);
+  }
+}
+
+/* Idle state for fluid tail */
+.cursor-fluid-layer.is-idle .cursor-fluid-dot {
+  opacity: 0 !important;
+  transform: translate3d(-50%, -50%, 0) scale(0.4) !important;
+}
+
+
+
+
+
+/* Disable system cursor */
+html, body {
+  cursor: none !important;
+}
+
+/* Fluid tail particles */
+.cursor-tail {
+  position: fixed;
+  width: 26px;
+  height: 26px;
+  pointer-events: none;
+  z-index: 99998;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,0.95) 0%,
+      rgba(255,220,160,0.9) 55%,
+      rgba(255,180,60,0.85) 75%,
+      rgba(255,140,0,0.6) 100%
+    );
+
+  border-radius: 50%;
+  filter:
+    blur(6px)
+    drop-shadow(0 0 10px rgba(255,215,120,0.9));
+
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0;
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.19,1,0.22,1);
+}
+
+/* Active tail */
+.cursor-tail.is-active {
+  opacity: 1;
+}
+
+/* Idle (hidden) */
+.cursor-tail.is-idle {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.3);
+}
+
+
+/* =========================================
+   STABLE PARALLAX (VARIABLE-DRIVEN)
+========================================= */
+
+.values-card,
+.why-card,
+.process-card,
+.contact-card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --lift: 0px;
+
+  transform:
+    translateZ(0)
+    translateY(var(--lift))
+    rotateX(var(--rx))
+    rotateY(var(--ry));
+
+  transition:
+    transform 0.45s cubic-bezier(0.19,1,0.22,1);
+
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Active lift */
+.card-parallax-active {
+  --lift: -12px;
+}
+
+/* Touch safety */
+@media (hover: none), (pointer: coarse) {
+  .values-card,
+  .why-card,
+  .process-card,
+  .contact-card {
+    transition: transform 0.35s ease;
+  }
+}
+
+
+/* ===============================
+   DISABLE SYSTEM CURSOR (DESKTOP)
+================================ */
+
+html,
+body {
+  cursor: none;
+}
+
+/* Keep text selection usable */
+input,
+textarea,
+button,
+a {
+  cursor: none;
+}
+
+/* Mobile safety – system cursor doesn't exist anyway */
+@media (max-width: 768px) {
+  html,
+  body {
+    cursor: auto;
+  }
+}
+
+
+
+
+
+/* =========================================
+   ✅ RE-ENABLE BACKGROUND SYSTEM (SAFE)
+   Fixes blank screen issue
+========================================= */
+
+/* 1️⃣ Force body & html to allow background rendering */
+html,
+body {
+  background-color: #020bff; /* your base blue */
+  overflow-x: hidden;
+}
+
+/* 2️⃣ Re-enable canvas safely */
+#bgCanvas {
+  display: block !important;
+  position: fixed !important;
+  inset: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 1 !important;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* 3️⃣ Re-enable video / shape layers */
+.video-bg-layer {
+  display: block !important;
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* 4️⃣ Make sure background shapes are visible */
+.bg-shape {
+  display: block !important;
+  opacity: 0.25;
+}
+
+/* 5️⃣ Push actual site content ABOVE background */
+header,
+main,
+section,
+footer,
+.page {
+  position: relative;
+  z-index: 5;
+}
+
+/* 6️⃣ Prevent accidental white / transparent overlays */
+body::before,
+body::after {
+  content: none !important;
+}
+
+
+/* =========================================
+   🏠 HOME PAGE — SCROLL ILLUSION ENABLE
+========================================= */
+
+/* Enable the illusion layer */
+body[data-page="home"] .scroll-illusion-bg {
+  position: fixed;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Tablets: slightly reduced */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .scroll-illusion-bg {
+    width: min(460px, 65vw);
+    height: min(460px, 65vw);
+    opacity: 0.7;
+  }
+}
+
+/* Mobile: subtle, lighter & smaller */
+@media (max-width: 767.98px) {
+  .scroll-illusion-bg {
+    width: min(360px, 90vw);
+    height: min(500px, 90vw);
+    opacity: 0.45;
+    size: 10%;
+    margin-top: 80%;
+    
+  }
+}
+
+/* Hide secondary scroll illusion only on mobile */
+@media (max-width: 768px) {
+  .scroll-illusion-bg.secondary.s1 {
+    display: none !important;
+  }
+}
+
+
+
+/* ===============================
+   MOBILE BOTTOM BAR COLOR FIX
+   =============================== */
+
+/* Ensure full viewport background */
+html, body {
+  background-color: #050b3a; /* SAME as your site background */
+  min-height: 100%;
+  overscroll-behavior: none;
+}
+
+/* Prevent mobile overscroll color */
+body {
+  overscroll-behavior-y: none;
+}
+
+/* iOS safe-area fix */
+body {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Android Chrome address bar fix */
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-color: #050b3a;
+  }
+}
+
+
+
+
+/* ===============================
+   3D BIRDS BACKGROUND LAYER
+================================ */
+
+#birds-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0; /* behind content */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Make sure hero/content stays above */
+.hero,
+main,
+header {
+  position: relative;
+  z-index: 2;
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+  #birds-bg {
+    display: none;
+  }
+}
+
+
+
+/* =========================================
+   RESTORE MOBILE PULL-TO-REFRESH (CHROME)
+========================================= */
+
+html,
+body {
+  overscroll-behavior-y: auto;   /* ✅ allow pull-to-refresh */
+  overscroll-behavior-x: none;
+}
+
+/* Allow vertical scrolling on touch devices */
+body {
+  touch-action: pan-y;
+}
+
+/* Background layers MUST NOT block scroll */
+#birds-bg,
+#bgCanvas,
+#energyCanvas,
+.scroll-illusion-bg,
+.cursor-blob {
+  pointer-events: none;
+}

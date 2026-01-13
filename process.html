@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <title>Process — FAMEIQ</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+</head>
+<body data-page="process">
+  <!--3d blobs sliver and golden-->
+<canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+<div class="video-bg-layer" aria-hidden="true"> <!--trinagle -->
+  <span class="bg-shape s11"></span>
+  <span class="bg-shape s12"></span>
+  <span class="bg-shape s13"></span>
+  <span class="bg-shape s14"></span>
+  <span class="bg-shape s15"></span>
+</div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="FAMEIQ — Home">
+        <img src="logo.png" alt="FAMEIQ" class="brand-logo" />
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="process.html" class="is-active">Process</a></li>
+          <li><a href="why-us.html">Why Us</a></li>
+          <li>
+            <a href="contact.html" class="btn btn-small btn-outline">Let’s Talk</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="background-layer" aria-hidden="true">
+    <canvas id="bgCanvas"></canvas>
+    <div class="orb orb-left"></div>
+    <div class="orb orb-right"></div>
+  </div>
+
+  <main class="page">
+    <section class="section process-section" aria-labelledby="process-title">
+      <div class="container section-header reveal-up">
+        <p class="eyebrow">How projects flow</p>
+        <h2 id="process-title">A simple, three‑phase process built for momentum.</h2>
+        <p class="section-intro">
+          Inspired by high‑performing studios and AI automation teams, the process is structured
+          to keep decisions clear and timelines predictable.
+        </p>
+      </div>
+
+      <div class="container process-grid">
+        <article class="process-card glass process-card--primary reveal-up">
+          <div class="process-step">Phase 01</div>
+          <h3>Discovery & Direction</h3>
+          <p>
+            A focused strategy call to understand your goals, audience and current challenges.
+            Together a clear direction and success metrics are defined.
+          </p>
+          <ul>
+            <li>Brand and website audit</li>
+            <li>Positioning & messaging outline</li>
+            <li>Project roadmap & priorities</li>
+          </ul>
+        </article>
+
+        <article class="process-card glass process-card--primary reveal-up" style="--delay:0.08s">
+          <div class="process-step">Phase 02</div>
+          <h3>Concept, Design & Build</h3>
+          <p>
+            Wireframes become fully designed pages, interactions and prototypes, then move
+            into high‑performance front‑end implementation.
+          </p>
+          <ul>
+            <li>UX flows & page architecture</li>
+            <li>Visual language & components</li>
+            <li>Responsive development & QA</li>
+          </ul>
+        </article>
+
+        <article class="process-card glass process-card--primary reveal-up" style="--delay:0.16s">
+          <div class="process-step">Phase 03</div>
+          <h3>Launch & Ongoing Optimization</h3>
+          <p>
+            The site is launched with tracking in place, followed by data‑driven refinements
+            to keep performance and conversions climbing.
+          </p>
+          <ul>
+            <li>Launch support & handoff</li>
+            <li>Analytics & heatmap review</li>
+            <li>Iterative UX improvements</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">FAMEIQ</span>
+        <p>Creative digital studio for brands ready to stand out.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="process.html">Process</a>
+        <a href="why-us.html">Why us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-meta">
+        <a href="mailto:hello@fameiq.studio">hello@fameiq.studio</a>
+        <span>© <span id="year"></span> FAMEIQ Studio</span>
+      </div>
+    </div>
+    <div class="background-layer" aria-hidden="true"></div>
+
+  </footer>
+<!--  Plus Menu -->
+<div id="plusMenuRoot">
+  <button id="plusToggle" aria-label="Open menu">+</button>
+
+  <div id="plusMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="why-us.html">Why Us</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+
+</body>
+</html>

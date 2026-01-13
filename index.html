@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+  <title>FAMEIQ — Creative Digital Studio</title>
+  <meta
+    name="description"
+    content="FAMEIQ helps brands scale with strategy, design, and high-performing web experiences for ambitious businesses."
+  />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+
+  <script src="main.js" defer></script>
+</head>
+<body data-page="home">
+
+
+<!-- 3D Birds Background -->
+<div id="birds-bg" aria-hidden="true"></div>
+
+
+  <!-- Scroll 3D illusion background 
+<div class="scroll-illusion-bg" aria-hidden="true"></div>
+<div class="scroll-illusion-bg primary"></div>
+<div class="scroll-illusion-bg secondary s1"></div>-->
+
+
+
+<!-- Cursor splash zones (NO layout impact) -->
+<div class="cursor-zone hero-zone" data-splash="#ffd900"></div>
+<div class="cursor-zone values-zone" data-splash="#5ddcff"></div>
+<div class="cursor-zone process-zone" data-splash="#ff6ad5"></div>
+<div class="cursor-zone footer-zone" data-splash="#6aff9f"></div>
+
+<div id="cursorBlob"></div>
+<div id="cursorFluid"></div>
+
+
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="FAMEIQ — Home">
+        <img src="logo.png" alt="FAMEIQ" class="brand-logo" />
+      </a>
+
+      <!-- NAV REMOVED: keep minimal header with logo only -->
+      <nav class="nav" aria-label="Primary navigation"></nav>
+    </div>
+  </header>
+
+  <!-- ================= BACKGROUND LAYER ================= -->
+  <div class="background-layer" aria-hidden="true">
+    <canvas id="bgCanvas"></canvas>
+    <div class="orb orb-left"></div>
+    <div class="orb orb-right"></div>
+  </div>
+
+  <!-- ================= PAGE ================= -->
+  <main class="page" id="top">
+    <!-- ================ HERO ================ -->
+    <section class="section hero hero-section" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-copy reveal-up">
+          <p class="eyebrow">Creative digital partner</p>
+          <h1 class="hero-title" id="hero-title">
+            Helping brands 
+            <span class="highlight-inline">grow</span>
+            <span class="hero-title">with</span>
+            <span class="highlight-inline">design</span>,
+            <span class="highlight-inline">story</span> and
+            <span
+                  class="highlight-inline highlight-rollout"
+                    data-words="advanced web,digital strategy,creative tech,brand systems,scalable growth"
+>
+                            <span class="roll-text">advanced web</span></span>
+
+
+
+          </h1>
+          <p class="hero-subtitle">
+            FAMEIQ is a creative studio that turns ambitious ideas into
+            high‑performing digital experiences — blending strategy, visual identity
+            and web development to help businesses grow faster.
+          </p>
+
+          <div class="hero-metrics">
+  <div class="metric">
+    <span class="metric-value" data-target="50">0</span><span class="metric-suffix">+</span>
+    <span class="metric-label">brands guided</span>
+  </div>
+  <div class="metric">
+    <span class="metric-value" data-target="100">0</span><span class="metric-suffix">%</span>
+    <span class="metric-label">launch success rate</span>
+  </div>
+  <div class="metric">
+    <span class="metric-value" data-target="20">0</span><span class="metric-suffix">+</span>
+    <span class="metric-label">combined yrs experience</span>
+  </div>
+</div>
+
+
+          <div class="hero-actions">
+            <a href="contact.html" class="btn btn-primary">Book a discovery call</a>
+          </div>
+        </div>
+
+        <!-- NEW: circular line animation on the right side of the hero -->
+        <!-- Right-side animated links column -->
+
+
+        
+    </section>
+
+    <!-- ================ VALUES ================ -->
+    <section class="section values-section" aria-labelledby="values-title">
+      <div class="container section-header reveal-up">
+        <p class="eyebrow">What drives FAMEIQ</p>
+        <h2 id="values-title">Values that keep every project focused on real results.</h2>
+        <p class="section-intro">
+          The work is guided by a clear set of principles so your website does not just look
+          good but becomes a reliable growth engine for the business.
+        </p>
+      </div>
+
+      <div class="container values-grid">
+        <article class="values-card glass reveal-up">
+          <h3>Clarity over clutter</h3>
+          <p>
+            Every screen is crafted to communicate one clear story — your value, your offer,
+            and why it matters right now.
+          </p>
+        </article>
+
+        <article class="values-card glass reveal-up" style="--delay:0.06s">
+          <h3>Design that sells</h3>
+          <p>
+            Layouts, copy and interactions are aligned around one goal:
+            moving visitors smoothly toward action, not just admiration.
+          </p>
+        </article>
+
+        <article class="values-card glass reveal-up" style="--delay:0.12s">
+          <h3>Long‑term partnerships</h3>
+          <p>
+            FAMEIQ works as an extension of your team, iterating with you as the brand evolves
+            instead of handing over a static site.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">FAMEIQ</span>
+        <p>Creative digital studio for brands ready to stand out.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="process.html">Process</a>
+        <a href="why-us.html">Why us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-meta">
+        <a href="mailto:hello@fameiq.studio">hello@fameiq.studio</a>
+        <span>© <span id="year"></span> FAMEIQ Studio</span>
+      </div>
+    </div>
+    <div class="background-layer" aria-hidden="true"></div>
+
+  </footer>
+<!-- Plus Menu -->
+<div id="plusMenuRoot">
+  <button id="plusToggle" aria-label="Open menu">+</button>
+
+  <div id="plusMenu">
+    <a href="about.html"> About</a>
+    <a href="process.html">Process</a>
+    <a href="why-us.html">Why Us</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+  <title>Let’s Talk — FAMEIQ</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+</head>
+<body data-page="contact">
+  <!--3d blobs sliver and golden-->
+<canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  
+
+
+<!-- Cursor splash zones (NO layout impact) -->
+<div class="cursor-zone hero-zone" data-splash="#ffd900"></div>
+<div class="cursor-zone values-zone" data-splash="#5ddcff"></div>
+<div class="cursor-zone process-zone" data-splash="#ff6ad5"></div>
+<div class="cursor-zone footer-zone" data-splash="#6aff9f"></div>
+
+
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="FAMEIQ — Home">
+        <img src="logo.png" alt="FAMEIQ" class="brand-logo" />
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="process.html">Process</a></li>
+          <li><a href="why-us.html">Why Us</a></li>
+          <li>
+            <a href="contact.html" class="btn btn-small btn-outline is-active">Let’s Talk</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="background-layer" aria-hidden="true">
+    <canvas id="bgCanvas"></canvas>
+    <div class="orb orb-left"></div>
+    <div class="orb orb-right"></div>
+  </div>
+
+  <main class="page">
+    <section class="section contact-section" aria-labelledby="contact-title">
+      <div class="container contact-card cta-inner glass reveal-up">
+        <div class="cta-copy">
+          <p class="eyebrow">Let’s build what’s next</p>
+          <h2 id="contact-title">Let design, copy and code work together so your brand can scale faster.</h2>
+          <p>
+            Share a bit about where your website is today and where you want it to be.
+            FAMEIQ responds within one business day with next steps.
+          </p>
+        </div>
+
+        <form class="contact-form" novalidate>
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" required placeholder="Alex from Brightline" />
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required placeholder="you@example.com" />
+          </div>
+          <div class="form-row">
+            <label for="type">Project type</label>
+            <select id="type" name="type">
+              <option value="">Select an option</option>
+              <option value="rebuild">Website rebuild</option>
+              <option value="new">New website</option>
+              <option value="audit">UX / conversion audit</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="message">Project details</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Tell us about your goals, timeline and what success looks like."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            Request a call
+          </button>
+          <p class="form-note">Avg response time: under 24 hours.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">FAMEIQ</span>
+        <p>Creative digital studio for brands ready to stand out.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="process.html">Process</a>
+        <a href="why-us.html">Why us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-meta">
+        <a href="mailto:hello@fameiq.studio">hello@fameiq.studio</a>
+        <span>© <span id="year"></span> FAMEIQ Studio</span>
+      </div>
+    </div>
+    <div class="background-layer" aria-hidden="true"></div>
+
+  </footer>
+<!--  Plus Menu -->
+<div id="plusMenuRoot">
+  <button id="plusToggle" aria-label="Open menu">+</button>
+
+  <div id="plusMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="process.html">Process</a>
+    <a href="why-us.html">Why Us</a>
+  </div>
+</div>
+
+</body>
+</html>

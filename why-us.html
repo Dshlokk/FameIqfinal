@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+  <title>Why Us — FAMEIQ</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+</head>
+<body data-page="why-us">
+  <!--3d blobs sliver and golden-->
+<canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+<div class="video-bg-layer" aria-hidden="true"> <!--trinagle -->
+  <span class="bg-shape s11"></span>
+  <span class="bg-shape s12"></span>
+  <span class="bg-shape s13"></span>
+  <span class="bg-shape s14"></span>
+  <span class="bg-shape s15"></span>
+</div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="FAMEIQ — Home">
+        <img src="logo.png" alt="FAMEIQ" class="brand-logo" />
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="process.html">Process</a></li>
+          <li><a href="why-us.html" class="is-active">Why Us</a></li>
+          <li>
+            <a href="contact.html" class="btn btn-small btn-outline">Let’s Talk</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="background-layer" aria-hidden="true">
+    <canvas id="bgCanvas"></canvas>
+    <div class="orb orb-left"></div>
+    <div class="orb orb-right"></div>
+  </div>
+
+  <main class="page">
+    <section class="section why-section" aria-labelledby="why-title">
+      <div class="container section-header reveal-up">
+        <p class="eyebrow">Why teams choose FAMEIQ</p>
+        <h2 id="why-title">Built to shatter the expected and raise the bar for your brand.</h2>
+        <p class="section-intro">
+          Borrowing from award‑winning studios, the focus is on bold visuals, clear copy and
+          thoughtful animation that keeps attention where it matters most.
+        </p>
+      </div>
+
+      <div class="container why-layout">
+        <div class="why-left glass why-card reveal-up">
+          <h3 class="why-left-title">What you get with FAMEIQ</h3>
+
+          <div class="why-left-item">
+            <h4 class="why-label">Advanced web craft</h4>
+            <p>
+              Responsive layouts, micro‑interactions and performance‑first builds tailored
+              for modern browsers and devices.
+            </p>
+          </div>
+
+          <div class="why-left-item">
+            <h4 class="why-label">Conversion‑driven storytelling</h4>
+            <p>
+              Narrative structure inspired by top AI agencies: problem, transformation,
+              proof and action — all in a single clear path.
+            </p>
+          </div>
+
+          <div class="why-left-item">
+            <h4 class="why-label">Partner, not vendor</h4>
+            <p>
+              Tight feedback loops, transparent communication and support that extends
+              beyond launch into continuous improvement.
+            </p>
+          </div>
+        </div>
+
+        <aside class="why-side glass why-card reveal-fade">
+          <h3>Is your current website…</h3>
+          <ul class="why-questions">
+            <li>Struggling with high bounce rates and low engagement?</li>
+            <li>Failing to generate qualified leads and sales?</li>
+            <li>Feeling outdated next to your competitors?</li>
+          </ul>
+          <p>
+            FAMEIQ is built to turn that into a modern, sales‑ready experience that you are proud
+            to send clients to.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">FAMEIQ</span>
+        <p>Creative digital studio for brands ready to stand out.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="process.html">Process</a>
+        <a href="why-us.html">Why us</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-meta">
+        <a href="mailto:hello@fameiq.studio">hello@fameiq.studio</a>
+        <span>© <span id="year"></span> FAMEIQ Studio</span>
+      </div>
+    </div>
+    <div class="background-layer" aria-hidden="true"></div>
+
+  </footer>
+<!-- Plus Menu -->
+<div id="plusMenuRoot">
+  <button id="plusToggle" aria-label="Open menu">+</button>
+
+  <div id="plusMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+</body>
+</html>
